@@ -18,6 +18,8 @@ graph controls {
     control_3_5 -- install_AIDE
     integrity_check [label="Ensure filesystem integrity is regularly checked"]
     control_3_5 -- integrity_check
+    prelink [label="Ensure prelink is disabled"]
+    control_3_5 -- prelink
 
     control_4_5 [label="Control 4.5: Use Automated Patch Management And Software Update Tools", shape=box]
     controls -- control_4_5
@@ -34,6 +36,8 @@ graph controls {
     control_5_1 -- bootloader_perms
     bootloader_passwd [label="Ensure bootloader password is set"]
     control_5_1 -- bootloader_passwd
+    single_user_mode_auth [label="Ensure authentication required for single user mode"]
+    control_5_1 -- single_user_mode_auth
 
     control_6_3 [label="Control 6.3: Ensure Audit Logging Systems Are Not Subject To Loss (i.e. rotation/archive)", shape=box]
     controls -- control_6_3
@@ -52,10 +56,19 @@ graph controls {
     disable_automounting [label="Disable Automounting"]
     control_8_3 -- disable_automounting
 
+    control_8_4 [label="Enable Anti-exploitation Features (i.e. DEP, ASLR, EMET)"]
+    control_8 -- control_8_4
+    no_execute [label="Ensure XD/NX support is enabled"]
+    control_8_4 -- no_execute
+    aslr [label="Ensure address space layout randomization (ASLR) is enabled"]
+    control_8_4 -- aslr
+
     control_13 [label="Control 13: Data Protection", shape=box]
     controls -- control_13
     disbale_fs [label="Disable unused filesystems"]
     control_13 -- disbale_fs
     sticky_bit [label="Ensure sticky bit is set on all world_writable directories"]
     control_13 -- sticky_bit
+    core_dump [label="Ensure core dumps are restricted"]
+    control_13 -- core_dump
 }
