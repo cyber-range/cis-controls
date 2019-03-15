@@ -1,0 +1,61 @@
+graph controls {
+    rankdir=LR;
+
+    controls [label="Controls", shape=box]
+
+    control_2 [label="Control 2: Inventory of Authorized and Unauthorized Software", shape=box]
+    controls -- control_2
+    tmp_noexec [label="Ensure noexec option set on /tmp partition"]
+    control_2 -- tmp_noexec
+    var_tmp_noexec [label="Ensure noexec option set on /var/tmp partition"]
+    control_2 -- var_tmp_noexec
+    dev_shm_noexec [label="Ensure noexec option set on /dev/shm partition"]
+    control_2 -- dev_shm_noexec
+
+    control_3_5 [label="Control 3.5: Use File Integrity Tools For Critical System Files", shape=box]
+    controls -- control_3_5
+    install_AIDE [label="Ensure AIDE is installed"]
+    control_3_5 -- install_AIDE
+    integrity_check [label="Ensure filesystem integrity is regularly checked"]
+    control_3_5 -- integrity_check
+
+    control_4_5 [label="Control 4.5: Use Automated Patch Management And Software Update Tools", shape=box]
+    controls -- control_4_5
+    config_yum [label="Ensure package manager repositories are configured"]
+    control_4_5 -- config_yum
+    yum_gpg [label="Ensure GPG keys are configured"]
+    control_4_5 -- yum_gpg
+    yum_gpg_check [label="Ensure gpgcheck is globally activated"]
+    control_4_5 -- yum_gpg_check
+
+    control_5_1 [label="Control 5.1: Minimize And Sparingly Use Administrative Privileges", shape=box]
+    controls -- control_5_1
+    bootloader_perms [label="Ensure permissions on bootloader config are configured"]
+    control_5_1 -- bootloader_perms
+    bootloader_passwd [label="Ensure bootloader password is set"]
+    control_5_1 -- bootloader_passwd
+
+    control_6_3 [label="Control 6.3: Ensure Audit Logging Systems Are Not Subject To Loss (i.e. rotation/archive)", shape=box]
+    controls -- control_6_3
+    var_log_partition [label="Ensure separate partition exists for /var/log"]
+    control_6_3 -- var_log_partition
+    var_log_audit_partition [label="Ensure separate partition exists for /var/log/audit"]
+    control_6_3 -- var_log_audit_partition
+
+    control_8 [label="Control 8: Malware Defenses", shape=box]
+    controls -- control_8
+    removable_media_noexec [label="Ensure noexec option set on removable media partitions"]
+    control_8 -- removable_media_noexec
+
+    control_8_3  [label="Control 8.3: Limit Use Of External Devices (i.e. USB)", shape=box]
+    control_8 -- control_8_3
+    disable_automounting [label="Disable Automounting"]
+    control_8_3 -- disable_automounting
+
+    control_13 [label="Control 13: Data Protection", shape=box]
+    controls -- control_13
+    disbale_fs [label="Disable unused filesystems"]
+    control_13 -- disbale_fs
+    sticky_bit [label="Ensure sticky bit is set on all world_writable directories"]
+    control_13 -- sticky_bit
+}
