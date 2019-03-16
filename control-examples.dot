@@ -84,6 +84,27 @@ graph controls {
     aslr [label="Ensure address space layout randomization (ASLR) is enabled"]
     control_8_4 -- aslr
 
+    control_9 [label="Control 9", shape=box]
+    controls -- control_9
+
+    control_9_1 [label="Control 9.1: Limit Open Ports, Protocols, and Services", shape=box]
+    control_9 -- control_9_1
+    chargen_disabled [label="Ensure chargen services are not enabled"]
+    control_9_1 -- chargen_disabled
+    daytime_disabled [label="Ensure daytime services are not enabled"]
+    control_9_1 -- daytime_disabled
+    discard_disabled [label="Ensure discard services are not enabled"]
+    control_9_1 -- discard_disabled
+    echo_disabled [label="Ensure echo services are not enabled"]
+    control_9_1 -- echo_disabled
+    time_disabled [label="Ensure time services are not enabled"]
+    control_9_1 -- time_disabled
+    tftp_disabled [label="Ensure tftp server is not enabled"]
+    control_9_1 -- tftp_disabled
+    xinetd_disabled [label="Ensure xinetd is not enabled"]
+    control_9_1 -- xinetd_disabled
+
+
     control_13 [label="Control 13: Data Protection", shape=box]
     controls -- control_13
     disbale_fs [label="Disable unused filesystems"]
