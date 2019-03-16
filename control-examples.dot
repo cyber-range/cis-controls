@@ -36,6 +36,8 @@ graph controls {
     control_4_5 -- yum_gpg
     yum_gpg_check [label="Ensure gpgcheck is globally activated"]
     control_4_5 -- yum_gpg_check
+    yum_security_update [label="Ensure updates, patches, and additional security software are installed"]
+    control_4_5 -- yum_security_update
 
     control_5 [label="Control 5", shape=box]
     controls -- control_5
@@ -48,6 +50,12 @@ graph controls {
     control_5_1 -- bootloader_passwd
     single_user_mode_auth [label="Ensure authentication required for single user mode"]
     control_5_1 -- single_user_mode_auth
+    etc_motd_perms [label="Ensure permissions on /etc/motd are configured"]
+    control_5_1 -- etc_motd_perms
+    etc_issue_perms [label="Ensure permissions on /etc/issue are configured"]
+    control_5_1 -- etc_issue_perms
+    etc_issuenet_perms [label="1.7.1.6 Ensure permissions on /etc/issue.net are configured (Not Scored)"]
+    control_5_1 -- etc_issuenet_perms
 
     control_6 [label="Control 6", shape=box]
     controls -- control_6
