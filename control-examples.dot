@@ -12,9 +12,28 @@ graph controls {
     control_2 -- var_tmp_noexec
     dev_shm_noexec [label="Ensure noexec option set on /dev/shm partition"]
     control_2 -- dev_shm_noexec
+    ybind_remove [label="Ensure NIS Client is not installed"]
+    control_2 -- ybind_remove
+    talk_remove [label="Ensure talk client is not installed"]
+    control_2 -- talk_remove
+    ldap_remove [label="Ensure LDAP client is not installed"]
+    control_2 -- ldap_remove
 
-    control_3 [label="Control 3", shape=box]
+    control_3 [label="Control 3: Secure Configurations for Hardware and Software on Mobile Devices, Laptops, Workstations, and Servers", shape=box]
     controls -- control_3
+
+    disable_ip_forwarding [label="Ensure IP forwarding is disabled"]
+    control_3 -- disable_ip_forwarding
+
+    disabel_packet_redirect [label="Ensure packet redirect sending is disabled"]
+    control_3 -- disabel_packet_redirect
+
+    control_3_4 [label="Use Only Secure Channels For Remote System Administration"]
+    control_3 -- control_3_4
+    rsh_remove [label="Ensure rsh client is not installed"]
+    control_3_4 -- rsh_remove
+    telnet_remove [label="Ensure telnet client is not installed"]
+    control_3_4 -- telnet_remove
 
     control_3_5 [label="Control 3.5: Use File Integrity Tools For Critical System Files", shape=box]
     control_3 -- control_3_5
@@ -60,6 +79,9 @@ graph controls {
     control_6 [label="Control 6", shape=box]
     controls -- control_6
 
+    control_6_1 [label="Control 6.1: Use At Least Two Synchronized Time Sources For All Servers And Network Equipment"]
+    control_6 -- control_6_1
+
     control_6_3 [label="Control 6.3: Ensure Audit Logging Systems Are Not Subject To Loss (i.e. rotation/archive)", shape=box]
     control_6 -- control_6_3
     var_log_partition [label="Ensure separate partition exists for /var/log"]
@@ -103,7 +125,48 @@ graph controls {
     control_9_1 -- tftp_disabled
     xinetd_disabled [label="Ensure xinetd is not enabled"]
     control_9_1 -- xinetd_disabled
+    cups_disabled [label="Ensure CUPS is not enabled"]
+    control_9_1 -- cups_disabled
+    dhcpd_disabled [label="Ensure DHCP Server is not enabled"]
+    control_9_1 -- dhcpd_disabled
+    slapd_disabled [label="Ensure LDAP server is not enabled"]
+    control_9_1 -- slapd_disabled
+    nfs_disabled [label="Ensure NFS and RPC are not enabled"]
+    control_9_1 -- nfs_disabled
+    named_disabled [label="Ensure DNS Server is not enabled"]
+    control_9_1 -- named_disabled
+    vsftpd_disabled [label="Ensure FTP Server is not enabled"]
+    control_9_1 -- vsftpd_disabled
+    httpd_disabled [label="Ensure HTTP server is not enabled"]
+    control_9_1 -- httpd_disabled
+    dovcot_disabled [label="Ensure IMAP and POP3 server is not enabled"]
+    control_9_1 -- dovcot_disabled
+    smb_disabled [label="Ensure Samba is not enabled"]
+    control_9_1 -- smb_disabled
+    squid_disabled [label="Ensure HTTP Proxy Server is not enabled"]
+    control_9_1 -- squid_disabled
+    snmpd_disabled [label="Ensure SNMP Server is not enabled"]
+    control_9_1 -- snmpd_disabled
+    mta_loopback_only [label="Ensure mail transfer agent is configured for local-only mode"]
+    control_9_1 -- mta_loopback_only
+    ypserv_disabled [label="Ensure NIS Server is not enabled"]
+    control_9_1 -- ypserv_disabled
+    rsh_disabled [label="Ensure rsh server is not enabled"]
+    control_9_1 -- rsh_disabled
+    telnet_disabled [label="Ensure telnet server is not enabled"]
+    control_9_1 -- telnet_disabled
+    tftp_disabled [label="Ensure tftp server is not enabled"]
+    control_9_1 -- tftp_disabled
+    rsync_disabled [label="Ensure rsync service is not enabled"]
+    control_9_1 -- rsync_disabled
+    ntalk_disabled [label="Ensure talk server is not enabled"]
+    control_9_1 -- ntalk_disabled
 
+    control_11 [label="Control 11: Secure Configurations for Network Devices such as Firewalls, Routers and switches", shape=box]
+    controls -- control_11
+
+    control_11 -- disable_ip_forwarding
+    control_11 -- disabel_packet_redirect
 
     control_13 [label="Control 13: Data Protection", shape=box]
     controls -- control_13
